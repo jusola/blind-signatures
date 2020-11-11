@@ -1,12 +1,6 @@
 const secureRandom = require('secure-random');
 const BigInteger = require('jsbn').BigInteger;
 const sha256 = require('js-sha256');
-const NodeRSA = require('node-rsa');
-
-function keyGeneration(params) {
-  const key = new NodeRSA(params || { b: 2048 });
-  return key;
-}
 
 function keyProperties(key) {
   return {
@@ -103,7 +97,6 @@ function verifyBlinding({ blinded, r, unblinded, key, E, N }) {
 }
 
 module.exports = {
-  keyGeneration,
   messageToHash,
   blind,
   sign,
